@@ -1,2 +1,9 @@
+# VSCode & CPH ফাইল
 **/.vscode/
 **/.cph/
+
+# সব exe ফাইল ignore
+**/*.exe
+
+# সব txt ফাইল ignore
+**/*.txt
