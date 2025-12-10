@@ -1,0 +1,1 @@
+when undirected grahp. becuase here each node connected each other.
