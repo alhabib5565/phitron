@@ -4,10 +4,9 @@ using namespace std;
 vector<string> grid;
 bool visited[1000][1000];
 int n, m;
-int tempArea = 0;
-void dfs(int row, int col)
+int dfs(int row, int col)
 {
-    tempArea++;
+    int tempArea = 1;
     visited[row][col] = true;
     int dx[4] = {-1, 1, 0, 0};
     int dy[4] = {0, 0, -1, 1};
@@ -19,9 +18,11 @@ void dfs(int row, int col)
 
         if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && !visited[newRow][newCol] && grid[newRow][newCol] == '.')
         {
-            dfs(newRow, newCol);
+            tempArea += dfs(newRow, newCol);
         }
     }
+
+    return tempArea;
 }
 int main()
 {
@@ -40,11 +41,7 @@ int main()
         for (int j = 0; j < m; j++)
         {
             if (!visited[i][j] && grid[i][j] == '.')
-            {
-                dfs(i, j);
-                minArea = min(minArea, tempArea);
-                tempArea = 0;
-            }
+                minArea = min(minArea, dfs(i, j));
         }
     }
 
