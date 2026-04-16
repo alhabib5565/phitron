@@ -1,25 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define ll long long int
 vector<vector<pair<int, int>>> adj_list;
-int dis[100001];
+ll dis[100001];
 int parents[100001];
 void dijkstra(int src)
 {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> pq;
     pq.push({0, 1});
     dis[1] = 0;
     while (!pq.empty())
     {
-        pair<int, int> crr = pq.top();
+        pair<ll, int> crr = pq.top();
         pq.pop();
         int crr_node = crr.second;
-        int crr_weight = crr.first;
+        ll crr_weight = crr.first;
 
         for (pair<int, int> child : adj_list[crr_node])
         {
             int child_node = child.second;
             int child_weight = child.first;
-            int newWeight = crr_weight + child_weight;
+            ll newWeight = crr_weight + child_weight;
+
             if (newWeight < dis[child_node])
             {
                 pq.push({newWeight, child_node});
@@ -43,7 +45,7 @@ int main()
         adj_list[v].push_back({w, u});
     }
     for (int i = 0; i <= n; i++)
-        dis[i] = INT_MAX;
+        dis[i] = LLONG_MAX;
     memset(parents, -1, sizeof(parents));
 
     dijkstra(1);
@@ -56,7 +58,7 @@ int main()
         par = parents[par];
     }
     // check parent exist or not
-    if (parents[n] == -1)
+    if (dis[n] == LLONG_MAX)
     {
         cout << -1;
         return 0;
