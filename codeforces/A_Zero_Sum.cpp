@@ -6,21 +6,22 @@ void solve()
     int n;
     cin >> n;
 
-    string str;
-    cin >> str;
-
-    int ans = 0;
-    int count = 0;
+    int sum = 0;
 
     for (int i = 0; i < n; i++)
     {
-        if (str[i] == '#')
-            count++;
-        else
-            count = 0;
-        ans = max(ans, count);
+        int a;
+        cin >> a;
+
+        sum += a;
     }
-    cout << (ans + 1) / 2 << '\n';
+
+    if (sum % 4 == 0)
+        cout << "YES";
+    else
+        cout << "NO";
+
+    cout << '\n';
 }
 
 int main()
