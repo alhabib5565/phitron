@@ -10,7 +10,7 @@ void solve()
 
     for (int i = 0; i < 4; i++)
     {
-        char x = sffx[i][1], y = sffx[i][0];
+        char x = sffx[i][0], y = sffx[i][1];
         int temp = 0;
 
         int j = str_n.size();
@@ -28,7 +28,7 @@ void solve()
                 break;
             temp++;
         }
-        ans = (ans, temp);
+        ans = min(ans, temp);
     }
 
     cout << ans << endl;
